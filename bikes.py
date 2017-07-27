@@ -1,3 +1,5 @@
+from math import pi
+
 class Bicycle:
 
     def __init__(self):
@@ -59,6 +61,21 @@ class Bicycle:
     def presentRearGear(self, value):
         self._presentRearGear = value
 
+    @property
+    def rimDiameter(self):
+        return self._rimDiameter
+
+    @rimDiameter.setter
+    def rimDiameter(self, value):
+        self._rimDiameter = value
+
+    @property
+    def tireDiameter(self):
+        return self._tireDiameter
+
+    @tireDiameter.setter
+    def tireDiameter(self, value):
+        self._tireDiameter = value
 
     def upshiftFront(self):
         self._presentFrontGear = min(self._frontChainrings, self._presentFrontGear+1)
@@ -85,7 +102,7 @@ class Bicycle:
         return self._rimDiameter + 2 * (self._tireDiameter)
 
     def wheelCircumference(self):
-        return 3.14159 * self.wheelDiameter()
+        return pi * self.wheelDiameter()
 
     def distancePerPedalRev(self):
         return self.gearRatio() * self.wheelCircumference()
