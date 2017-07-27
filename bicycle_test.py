@@ -69,5 +69,39 @@ class testDiameterAndCircumference(basicBicycleTest):
     def testCircumference(self):
         self.assertEqual(self.bike.wheelCircumference(), 692*pi)
 
+class testDistances(basicBicycleTest):
+    def testDistPerPedalRev(self):
+        self.assertAlmostEqual(self.bike.distancePerPedalRev(), self.bike.wheelCircumference() * 39/12)
+
+    def testDistancePerMinute(self):
+        self.assertAlmostEqual(self.bike.distancePerMinute(50), self.bike.distancePerPedalRev()*50)
+
+class testSetters(basicBicycleTest):
+    def testFrontChainringsSetter(self):
+        self.bike.frontChainrings = 3
+        self.assertEqual(self.bike.frontChainrings, 3)
+
+    def testRearCassetteSetter(self):
+        self.bike.cassetteGears = 7
+        self.assertEqual(self.bike.cassetteGears, 7)
+
+    def testFrontRingsSetter(self):
+        self.bike.frontRings = [41, 62]
+        self.assertEqual(self.bike.frontRings, [41, 62])
+
+    def testRearGearsSetter(self):
+        self.bike.rearGears = [12, 13, 15, 17, 20, 24, 29]
+        self.assertEqual(self.bike.rearGears, [12, 13,15, 17, 20, 24, 29])
+
+    def testRimDiameterSetter(self):
+        self.bike.rimDiameter = 511
+        self.assertEqual(self.bike.rimDiameter, 511)
+
+    def testTireDiameterSetter(self):
+        self.bike.tireDiameter = 32
+        self.assertEqual(self.bike.tireDiameter, 32)
+
+
+
 if __name__ == '__main__':
     unittest.main()
